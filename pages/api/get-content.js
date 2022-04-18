@@ -2,7 +2,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-const contentsDir = join(process.cwd(), '_contents');
+const contentsDir = join(process.cwd(), 'public/_contents');
 
 export default (req, res) => {
   const { query } = req;

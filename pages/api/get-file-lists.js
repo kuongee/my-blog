@@ -7,7 +7,7 @@ export default (req, res) => {
   }
 
   try {
-    const filenames = fs.readdirSync(`_contents/${query.subject}`);
+    const filenames = fs.readdirSync(`public/_contents/${query.subject}`);
 
     res.status(200).json({
       fileList: filenames.map(file => {

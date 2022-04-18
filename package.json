@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "netlify": "next build && next export"
   },
   "dependencies": {
     "@mantine/core": "^4.1.2",
     "@mantine/hooks": "^4.1.2",
+    "@netlify/plugin-nextjs": "^4.3.2",
     "axios": "^0.26.1",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
