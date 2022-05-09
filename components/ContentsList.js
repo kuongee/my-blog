@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import { SelectedSubjectState } from '@/atoms';
 
 const List = styled.ul`
   position: relative;
@@ -9,34 +9,18 @@ const List = styled.ul`
   margin: 0px;
 `;
 
-export default ({ subject }) => {
-  const [fileLists, setFileLists] = useState(null);
+export default ({ contentsList }) => {
+  const selectedSubject = useRecoilValue(SelectedSubjectState);
 
-  const fetchData = async () => {
-    try {
-      const { data } = await axios.get('/api/get-file-lists', { params: { subject } });
-      setFileLists(data.fileList);
-    } catch {
-      setFileLists(null);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [subject]);
-
-  console.log('data ', fileLists, subject);
-  if (!fileLists) {
-    return <>목록이 없습니다!</>
+  if (!contentsList || contentsList.length === 0) {
+    return <>목록이 없습니다!</>;
   }
 
   return (
     <List>
-      {fileLists.map(file => (
-        <li key={file.name} onClick={() => {}}>
-          <Link href={`/posts/${subject}/${file.name}`}>
-            <a>{file.name}</a>
-          </Link>
+      {contentsList.map((file, index) => (
+        <li key={index}>
+          <Link href={`/contents/${selectedSubject}/${file.fileName}`}>{file.name}</Link>
         </li>
       ))}
     </List>

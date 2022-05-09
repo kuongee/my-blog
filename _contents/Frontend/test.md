@@ -1,3 +1,7 @@
+---
+title: JavaScript Array
+---
+
 # JavaScript Array
 > 내장 함수
 

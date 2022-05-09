@@ -13,8 +13,6 @@
     "@mantine/core": "^4.1.2",
     "@mantine/hooks": "^4.1.2",
     "@netlify/plugin-nextjs": "^4.3.2",
-    "axios": "^0.26.1",
-    "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "next": "12.1.4",
     "path": "^0.12.7",

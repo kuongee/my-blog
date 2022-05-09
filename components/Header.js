@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Chips, Chip } from '@mantine/core';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { subjectState } from '@/atoms/index.js';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { SubjectsState, SelectedSubjectState } from '@/atoms';
 
 const Header = styled.header`
   position: relative;
@@ -12,18 +12,22 @@ const Header = styled.header`
 `;
 
 export default () => {
-  const selectedSubject = useRecoilValue(subjectState);
-  const setSelectedSubject = useSetRecoilState(subjectState);
+  const subjects = useRecoilValue(SubjectsState);
+  const [selectedSubject, setSelectedSubject] = useRecoilState(SelectedSubjectState);
 
   return (
     <Header>
-      <Chips position='center' value={selectedSubject} onChange={setSelectedSubject}>
-        {/* <Chip value=''>전체</Chip> */}
-        <Chip value='frontend'>Frontend</Chip>
-        <Chip value='nodejs'>NodeJS</Chip>
-        <Chip value='python'>python</Chip>
-        <Chip value='react'>React</Chip>
-      </Chips>
+      {subjects?.length > 0 ? (
+        <Chips position='center' value={selectedSubject} onChange={setSelectedSubject}>
+          {subjects.map(subject => (
+            <Chip key={subject} value={subject}>
+              {subject}
+            </Chip>
+          ))}
+        </Chips>
+      ) : (
+        <></>
+      )}
     </Header>
   );
 };
