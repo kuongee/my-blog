@@ -11,12 +11,16 @@ export default () => {
     const files = fs.readdirSync(join(contentsDirectory, dir));
 
     const getFiles = files.map(fileName => {
-      const fileContents = fs.readFileSync(join(contentsDirectory, dir, fileName), 'utf8');
+      const fileContents = fs.readFileSync(
+        join(contentsDirectory, dir, fileName),
+        'utf8'
+      );
       const { data } = matter(fileContents);
       return { fileName, name: data.title };
     });
+
     return { ...acc, [`${dir}`]: getFiles };
   }, {});
-  console.log(allContents);
+
   return { subjects: directory, contentsList: allContents };
 };

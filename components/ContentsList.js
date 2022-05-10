@@ -20,7 +20,9 @@ export default ({ contentsList }) => {
     <List>
       {contentsList.map((file, index) => (
         <li key={index}>
-          <Link href={`/contents/${selectedSubject}/${file.fileName}`}>{file.name}</Link>
+          <Link href={`/contents/${selectedSubject}/${file.fileName}`}>
+            {file.name}
+          </Link>
         </li>
       ))}
     </List>

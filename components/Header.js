@@ -13,12 +13,17 @@ const Header = styled.header`
 
 export default () => {
   const subjects = useRecoilValue(SubjectsState);
-  const [selectedSubject, setSelectedSubject] = useRecoilState(SelectedSubjectState);
+  const [selectedSubject, setSelectedSubject] =
+    useRecoilState(SelectedSubjectState);
 
   return (
     <Header>
       {subjects?.length > 0 ? (
-        <Chips position='center' value={selectedSubject} onChange={setSelectedSubject}>
+        <Chips
+          position="center"
+          value={selectedSubject}
+          onChange={setSelectedSubject}
+        >
           {subjects.map(subject => (
             <Chip key={subject} value={subject}>
               {subject}

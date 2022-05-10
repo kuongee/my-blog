@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import MarkdownTemplate from '@/components/MarkdownTemplate';
-import getAllContents from '@/lib/api/get-all-contents';
-import getContent from '@/lib/api/get-content';
+import getAllContents from '@/api/get-all-contents';
+import getContent from '@/api/get-content';
 
 const Template = styled.div`
   position: absolute;
