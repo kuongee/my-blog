@@ -5,7 +5,17 @@ import getContent from '@/api/get-content';
 
 const Template = styled.div`
   position: absolute;
-  padding: 0 50px 30px 50px;
+  padding: 0 0 30px;
+  @media only screen and (min-width: 768px) {
+    width: 50vw;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @media only screen and (max-width: 768px) {
+    width: 100vw;
+    max-width: calc(100% - 20px);
+    padding: 0 10px 30px;
+  }
 `;
 
 const Footer = styled.footer`
